@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nandan MB | Computer Science Student</title>
+<meta name="description" content="Portfolio of Nandan MB, third-year Computer Science student at PES College of Engineering, Mandya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1424;
+  --panel:#171E33;
+  --line:#2A3452;
+  --text:#E6EAF2;
+  --muted:#9AA4BD;
+  --sky:#5CC8FF;
+  --amber:#FFC266;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--ink);color:var(--text);font-family:var(--body);line-height:1.65;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:rgba(15,20,36,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:var(--head);font-weight:800;font-size:20px;text-decoration:none}
+.logo span{color:var(--sky)}
+nav ul{display:flex;gap:26px;list-style:none}
+nav ul a{text-decoration:none;color:var(--muted);font-size:15px;transition:color .2s}
+nav ul a:hover{color:var(--text)}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.02em}
+.sub{margin-top:20px;color:var(--muted);max-width:46ch;font-size:19px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-block;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:500;transition:transform .2s,background .2s}
+.btn.primary{background:var(--sky);color:var(--ink)}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--sky)}
+
+/* code window: the one memorable element */
+.editor{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:#131a2e}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.dot:nth-child(1){background:#FF6B6B}.dot:nth-child(2){background:var(--amber)}.dot:nth-child(3){background:#5EE0A0}
+.tab{margin-left:12px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+pre{font-family:var(--mono);font-size:14.5px;line-height:1.75;padding:22px 22px 26px;overflow-x:auto;min-height:290px}
+.k{color:#C79BFF}.s{color:#9FE3A8}.p{color:var(--sky)}.c{color:#66718F}
+.caret{display:inline-block;width:8px;height:1.1em;background:var(--amber);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--head);font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-.01em;margin-bottom:28px}
+.about p{max-width:62ch;color:#C9D0E2}
+.about p+p{margin-top:16px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
+.group h3{font-family:var(--head);font-size:20px;margin-bottom:6px}
+.group p{color:var(--muted);font-size:15px;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text)}
+.chip.main{border-color:var(--sky);color:var(--sky)}
+
+.edu{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:26px 28px}
+.edu h3{font-family:var(--head);font-size:22px}
+.edu p{color:var(--muted)}
+.edu+.edu{margin-top:16px}
+.edu .when{font-family:var(--mono);font-size:14px;color:var(--amber);align-self:center}
+
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.slot{border:1.5px dashed var(--line);border-radius:12px;padding:28px;transition:border-color .2s}
+.slot:hover{border-color:var(--sky)}
+.slot h3{font-family:var(--head);font-size:20px;margin-bottom:8px}
+.slot p{color:var(--muted);font-size:15.5px}
+.slot .tag{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:13px;color:var(--amber)}
+.lead{color:var(--muted);max-width:60ch;margin:-12px 0 28px}
+
+.contact{text-align:center}
+.contact p{color:var(--muted);max-width:48ch;margin:0 auto 28px}
+.mail{font-family:var(--head);font-weight:700;font-size:clamp(22px,4.4vw,38px);color:var(--sky);text-decoration:none;word-break:break-all}
+.mail:hover{text-decoration:underline}
+.links{display:flex;justify-content:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+footer{padding:30px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero{padding:56px 0 48px}
+  nav ul{gap:16px}
+  nav ul li:nth-child(n+4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .caret{animation:none}
+  .btn{transition:none}
+}
+
+/* avatar, stats, motion */
+.avatar{position:relative;width:104px;height:104px;border-radius:50%;margin-bottom:26px;border:2px solid var(--sky);overflow:hidden;background:var(--panel);display:grid;place-items:center;box-shadow:0 0 0 6px rgba(92,200,255,.12)}
+.avatar span{font-family:var(--head);font-weight:800;font-size:34px;color:var(--sky)}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:40px;padding-top:26px;border-top:1px solid var(--line)}
+.stats b{display:block;font-family:var(--head);font-size:30px;line-height:1.1;color:var(--amber)}
+.stats span{font-size:14px;color:var(--muted)}
+.group,.slot,.edu{transition:transform .3s,border-color .3s,opacity .6s}
+.group:hover{transform:translateY(-4px);border-color:var(--sky)}
+.edu:hover{border-color:var(--sky);border-left-color:var(--amber)}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none}
+.group.reveal.in:hover{transform:translateY(-4px)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.group,.slot,.edu{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">Nandan<span>.</span></a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <div class="avatar"><span>NM</span><img src="photo.jpg" alt="Photo of Nandan MB" onerror="this.remove()"></div>
+        <h1>Hi, I’m Nandan MB.</h1>
+        <p class="sub">Third-year Computer Science student from Mandya, Karnataka. I’m learning to build software that works well and reads clearly.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="resume.pdf" download>Download resume</a>
+        </div>
+        <div class="stats">
+          <div><b>5th</b><span>Semester, B.E. CSE</span></div>
+          <div><b>4</b><span>Programming languages</span></div>
+          <div><b>2028</b><span>Graduating</span></div>
+        </div>
+      </div>
+
+      <div class="editor" aria-label="A short code snippet describing Nandan">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab">nandan.js</span></div>
+<pre id="code" aria-hidden="true"></pre>
+        <p class="sr" style="position:absolute;left:-9999px">Nandan MB, student at PES College of Engineering, Mandya. Skills: C, C++, Java, Python. Interests: AI and web development. Currently building a portfolio.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <h2>About me</h2>
+      <p>I’m a Computer Science and Engineering student at PES College of Engineering, Mandya, currently in my fifth semester. I’m building a strong base in programming, data structures, databases and software development.</p>
+      <p>I’m most curious about Artificial Intelligence, web development and new technology. This portfolio is my starting point, and projects, hackathons and certifications will be added here as I complete them.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="group">
+          <h3>Programming</h3>
+          <p>Languages I use for coursework and practice.</p>
+          <div class="chips"><span class="chip main">C programming</span><span class="chip main">C++</span><span class="chip main">Java</span><span class="chip">Python (basics)</span></div>
+        </div>
+        <div class="group">
+          <h3>Web and database</h3>
+          <p>For building pages and storing data.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript (basics)</span><span class="chip">MySQL</span></div>
+        </div>
+        <div class="group">
+          <h3>Core subjects</h3>
+          <p>The computer science foundations I study.</p>
+          <div class="chips"><span class="chip">Data Structures</span><span class="chip">DBMS</span><span class="chip">OOP</span><span class="chip">Operating Systems</span><span class="chip">Computer Networks</span></div>
+        </div>
+        <div class="group">
+          <h3>Tools</h3>
+          <p>How I write and share code.</p>
+          <div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span></div>
+        </div>
+        <div class="group">
+          <h3>Working with others</h3>
+          <p>Skills I use in team work and study.</p>
+          <div class="chips"><span class="chip">Problem solving</span><span class="chip">Teamwork</span><span class="chip">Communication</span><span class="chip">Time management</span><span class="chip">Adaptability</span><span class="chip">Quick learning</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="edu">
+        <div>
+          <h3>B.E. in Computer Science and Engineering</h3>
+          <p>PES College of Engineering, Mandya</p>
+        </div>
+        <span class="when">2024 to 2028</span>
+      </div>
+      <div class="edu">
+        <div>
+          <h3>Pre-University Course (PUC)</h3>
+          <p>Sri Chaitanya, Bengaluru</p>
+        </div>
+        <span class="when">Passed 2024</span>
+      </div>
+      <div class="edu">
+        <div>
+          <h3>Secondary School Examination (SSLC)</h3>
+          <p>Chinmaya Vidyalaya, Mandya</p>
+        </div>
+        <span class="when">Passed 2022</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects, hackathons and certifications</h2>
+      <p class="lead">These spaces are ready. Each one fills in as I finish something worth showing.</p>
+      <div class="slots">
+        <div class="slot">
+          <h3>Personal portfolio website</h3>
+          <p>This site. A responsive page built with HTML, CSS and JavaScript to show my background, skills and future work.</p>
+          <span class="tag">In progress</span>
+        </div>
+        <div class="slot">
+          <h3>Hackathons</h3>
+          <p>Team events I take part in, with the problem we picked and what we built in the time we had.</p>
+          <span class="tag">Coming soon</span>
+        </div>
+        <div class="slot">
+          <h3>Certifications</h3>
+          <p>Courses and certificates I complete, each linked to its proof.</p>
+          <span class="tag">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>I’m open to internships, hackathon teams and chats with other students. Email is the fastest way to reach me.</p>
+      <a class="mail" href="mailto:nn489005@gmail.com">nn489005@gmail.com</a>
+      <div class="links">
+        <a class="btn primary" href="resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="https://github.com/NandanMB0825" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/nandan-mb" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Nandan MB. Built by hand with HTML, CSS and JavaScript.</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Types the code snippet once, then stops. Skipped if the visitor prefers reduced motion.
+  var lines = [
+    '<span class="c">// who am I?</span>',
+    '<span class="k">const</span> <span class="p">nandan</span> = {',
+    '  name: <span class="s">"Nandan MB"</span>,',
+    '  college: <span class="s">"PES CE, Mandya"</span>,',
+    '  course: <span class="s">"Computer Science"</span>,',
+    '  semester: <span class="s">5</span>,',
+    '  skills: [<span class="s">"C"</span>, <span class="s">"C++"</span>, <span class="s">"Java"</span>, <span class="s">"Python"</span>],',
+    '  interests: [<span class="s">"AI"</span>, <span class="s">"Web"</span>],',
+    '  status: <span class="s">"building my portfolio"</span>',
+    '};'
+  ];
+  var el = document.getElementById('code');
+  var full = lines.join('\n');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce) {
+    el.innerHTML = full;
+  } else {
+    // Type character by character, treating HTML tags as single steps so markup stays valid.
+    var tokens = full.match(/<[^>]+>|&[a-z]+;|[\s\S]/g);
+    var i = 0, out = '';
+    (function tick() {
+      if (i >= tokens.length) { el.innerHTML = out + '<span class="caret"></span>'; return; }
+      var t = tokens[i++];
+      out += t;
+      if (t.charAt(0) === '<' || t.length > 1) return tick();
+      el.innerHTML = out + '<span class="caret"></span>';
+      setTimeout(tick, 22);
+    })();
+  }
+
+  // Gentle fade-in as cards scroll into view. Content stays visible if this cannot run.
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.group,.slot,.edu').forEach(function (n) { n.classList.add('reveal'); io.observe(n); });
+  }
+</script>
+</body>
+</html>
